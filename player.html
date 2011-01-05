@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  	<script type="text/javascript" src="jquery-1.4.4.min.js"></script>
+  	<script type="text/javascript" src="flowplayer-3.2.2.min.js"></script>
+  	<script type="text/javascript" src="querystring.js"></script>
+  	<style type="text/css">
+      body {margin:0px;padding:0px;}
+      #player{height:100%;width:100%;display:block;}
+  	</style>
+  	<title>Dynamic Video Player</title>
+  </head>
+  <body>
+    <div id="player"></div>
+    <script type="text/javascript">
+      // initialize query string
+      var qs = new Querystring();
+      
+      // pull values from query string
+      var url = qs.get("v");
+      var title = qs.get("t");
+      var autoplay = qs.get("autoplay");
+
+      // is the title param set? if not set to default then set page title
+      if(!title){title = 'Dynamic Video Player'}
+      document.title = title
+
+      // check for autoplay param
+      if(autoplay == '1'){ autoplay = true }else if(autoplay == '0'){ autoplay = false }
+  
+      // check for file url
+      if(url){
+        $f("player", "flowplayer-3.2.2.swf", {
+        	clip: { url: url, autoPlay: autoplay,	autoBuffering: true, scaling: 'fit' } 
+        })
+      }else{
+        $('#player').html('No input file specified.');
+      }
+    </script>	
+  </body>
+</html>
+
