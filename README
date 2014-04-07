@@ -14,3 +14,5 @@ http://roach.github.com/Dynamic-Video-Player/player.html?t=Test%20Player&autopla
 ##### Notes: #####
 
 Player height and width default to 100% and there is currently no method to override this.
+
+Built for [DealerTrend](https://github.com/dealertrend/)
